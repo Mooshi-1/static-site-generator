@@ -9,16 +9,16 @@ class TextType(Enum):
     Images = True 
 
 
-class TextNode(text, text_type, URL):
-    def __init__(self):
-        self.text = 'text content of the node'
+class TextNode():
+    def __init__(self, text, text_type, url=None):
+        self.text = text
         self.text_type = text_type
-        self.url = URL
+        self.url = url
         
 
-def __eq__():
+def __eq__(self):
     if TextNode == TextNode:
         return True
     
-def __repr__():
+def __repr__(self):
     return print(f"{TextNode.text}, {TextNode.text_type.value()}, {TextNode.url}")

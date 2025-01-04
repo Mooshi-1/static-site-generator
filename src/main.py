@@ -1,10 +1,12 @@
-import os
+
+import textnode
 
 #main
 
 def main():
     print("Hello world")
 
-    TextNode('testing', '**', 'google.com')
+    MYNODE = textnode.TextNode('testing', '**', 'google.com')
+    print(MYNODE)
 
 main()
