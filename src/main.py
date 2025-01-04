@@ -4,9 +4,9 @@ import textnode
 #main
 
 def main():
-    print("Hello world")
 
-    MYNODE = textnode.TextNode('testing', '**', 'google.com')
+    MYNODE = textnode.TextNode('testing', textnode.TextType.BOLD, 'google.com')
     print(MYNODE)
 
-main()
+if __name__ == "__main__":
+    main()
