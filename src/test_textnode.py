@@ -14,8 +14,7 @@ class TestTextNode(unittest.TestCase):
         node4 = TextNode("this is a node", TextType.LINK)
         self.assertNotEqual(node3, node4)
 
-    def to_html(self):
-        raise NotImplementedError
+
 
 
 

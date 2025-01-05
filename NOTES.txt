@@ -1,0 +1,14 @@
+important stuff
+
+in bash, use 
+chmod +x file.sh 
+
+to add permissions to execute the file.
+
+run directly using 
+
+./file.sh
+
+testing within file is useful at first but then take it to a separate test file so
+that the user doesn't have to confirm the output. the test file will say whether it
+passes or fails based on the (input, expected output) that the author creates. 
