@@ -12,3 +12,17 @@ run directly using
 testing within file is useful at first but then take it to a separate test file so
 that the user doesn't have to confirm the output. the test file will say whether it
 passes or fails based on the (input, expected output) that the author creates. 
+
+
+The 2>&1 is a shell redirection operator that redirects the standard error (2) to the same place as standard output (1). In other words:
+
+    2 represents stderr (error messages)
+    1 represents stdout (normal output)
+    >& means "redirect to"
+    2>&1 means "send error messages to the same place as normal output"
+
+This is useful because:
+
+    It captures both normal output AND error messages
+    It ensures we can see any error messages that might help debug failing tests
+    It prevents error messages from being lost or displayed separately
