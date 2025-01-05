@@ -9,6 +9,14 @@ class TestTextNode(unittest.TestCase):
         node2 = TextNode("This is a text node", TextType.BOLD)
         self.assertEqual(node, node2)
 
+    def test_diff(self):
+        node3 = TextNode("what even is a node", TextType.ITALIC)
+        node4 = TextNode("this is a node", TextType.LINK)
+        self.assertNotEqual(node3, node4)
+
+    def to_html(self):
+        raise NotImplementedError
+
 
 
 if __name__ == "__main__":
