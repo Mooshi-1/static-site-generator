@@ -1,6 +1,6 @@
 import unittest
 
-from htmlnode import HTMLNode, LeafNode
+from htmlnode import HTMLNode, LeafNode, ParentNode
 
 #more formal debugging
 #calls your function and compares it against a static result
@@ -41,10 +41,29 @@ class TestHTMLNode(unittest.TestCase):
         node = LeafNode(tag=None, value="No tag", props=None)
         self.assertEqual(node.to_html(), 'No tag')
     
-    def test_leafnode_novalue(self):
+    #parentnode tests
+    #more advanced children nodes
+    def test_parentnode_missing_tag(self):
         with self.assertRaises(ValueError):
-            node = LeafNode(tag="p", value=None, props=None)
+            node = ParentNode(tag=None, children=[LeafNode("b", "Bold text")])
             node.to_html()
+
+    def test_parentnode_missing_children(self):
+        with self.assertRaises(ValueError):
+            node = ParentNode(tag="div", children=None)
+            node.to_html()
+
+    def test_parentnode_valid_children(self):
+        node = ParentNode(
+            tag="div",
+            children=[
+                LeafNode("b", "Bold text"),
+                " and some ",
+                LeafNode("i", "italic text")
+            ]
+        )
+        expected_html = "<div><b>Bold text</b> and some <i>italic text</i></div>"
+        self.assertEqual(node.to_html(), expected_html)
 
 
 if __name__ == "__main__":

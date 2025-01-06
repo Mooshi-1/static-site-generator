@@ -37,19 +37,42 @@ class LeafNode(HTMLNode):
         return f"<{self.tag}{convert}>{self.value}</{self.tag}>"
 
 class ParentNode(HTMLNode):
-    def __init__():        
-        pass
+    def __init__(self, tag, children, props=None):
+            super().__init__(tag, None, children, props)     
+        #tag and children not optional  
+        #no value
 
+    def to_html(self):
+        if self.tag is None:
+            raise ValueError("Node tag is missing")
+        if self.children is None:
+            raise ValueError("Node children missing")
+        convert = self.props_to_html()
+        
+            
+        total_children = ""
+        for element in self.children:
+            #hasattr is a way to check if it's dealing with an object or a string
+            #(element, 'to_html') searches for the to_html method and prints True or False
+            if hasattr(element, 'to_html'):
+                total_children += element.to_html()
+            else:
+                total_children += element
 
+        
+        return f"<{self.tag}{convert}>{total_children}</{self.tag}>"
+               
+#<p><b>Bold text</b>Normal text<i>italic text</i>Normal text</p>
 
 #this block only runs if the file is run directly, add these for testing purposes
 if __name__ == '__main__':
-    test_node = LeafNode(
-        tag="a",
-        value='click me!',
-        props={
-            "href": "https://google.com",
-            "class": "link-button"
-        }
+    node = ParentNode(
+        "p",
+        [
+            LeafNode("b", "Bold text"),
+            LeafNode(None, "Normal text"),
+            LeafNode("i", "italic text"),
+            LeafNode(None, "Normal text"),
+        ],
     )
-    print(test_node.to_html())
+    node.to_html()
