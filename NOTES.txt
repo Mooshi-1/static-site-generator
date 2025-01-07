@@ -26,3 +26,6 @@ This is useful because:
     It captures both normal output AND error messages
     It ensures we can see any error messages that might help debug failing tests
     It prevents error messages from being lost or displayed separately
+
+
+cd workspace/github.com/Mooshi-1/'static site generator'
