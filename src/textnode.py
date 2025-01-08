@@ -40,6 +40,7 @@ def text_node_to_html_node(text_node):
     else:
         raise Exception("Not valid")
     
+    
 
 if __name__ == "__main__":
     test_text1 = TextNode(text="Hello World", text_type=TextType.BOLD)
